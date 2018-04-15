@@ -1,0 +1,13 @@
+<h1>US Time Zone Display</h1>
+<br>
+<button (click)="onButtonClick('PST')" id="PST">PST</button>
+<button (click)="onButtonClick('MST')" id="MST">MST</button>
+<button (click)="onButtonClick('CST')" id="CST">CST</button>
+<button (click)="onButtonClick('EST')" id="EST">EST</button>
+<button (click)="onButtonClick('CLEAR')" id="CLEAR">Clear</button>
+<br>
+<br>
+<br>
+<div id="time">
+  {{displaydate | date:'medium'}}
+</div>
