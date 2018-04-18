@@ -1,0 +1,45 @@
+.wrapper {
+  width: 80%;
+  border: 2px solid black;
+  display: block;
+  margin: 10px;
+}
+.register {
+  width: 80%;
+  display: block;
+  margin: 10px;
+}
+form {
+  width: 100%;
+}
+
+label,
+input,
+select {
+  display: inline-block;
+}
+
+label {
+  width: 20%;
+  text-align: right;
+}
+
+label + input {
+  width: 30%;
+  margin: 0 10% 0 4%;
+}
+select {
+  width: 30%;
+  margin: 0 10% 0 4%;
+}
+
+input + input {
+  float: right;
+}
+.error {
+  display: inline-block;
+  color: red;
+}
+div {
+  display: inline-block;
+}

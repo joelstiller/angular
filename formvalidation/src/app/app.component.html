@@ -1,0 +1,130 @@
+<h1>Registration</h1>
+<div class="wrapper">
+  <h2>Account Information</h2>
+  <form (submit)='onSubmit($event, formData)' #formData='ngForm'>
+    <label for="first_name">*First Name:</label>
+    <input type="text" name="first_name" required minlength="3" maxlength="24" [(ngModel)]="user.first_name" #firstName='ngModel'
+    />
+    <div *ngIf='(firstName.touched && firstName.errors)'>
+      <div class="error" *ngIf='firstName.errors.required'>You must enter a first name.</div>
+      <div class="error" *ngIf="firstName.errors.minlength">You must input a minimum of {{ firstName.errors.minlength.requiredLength }} characters!</div>
+    </div>
+    <br>
+    <label for="last_name">*Last Name:</label>
+    <input type="text" name="last_name" required minlength="3" maxlength="24" [(ngModel)]="user.last_name" #lastName='ngModel'
+    />
+    <div *ngIf='(lastName.touched && lastName.errors)'>
+      <div class="error" *ngIf='lastName.errors.required'>You must enter a last name.</div>
+      <div class="error" *ngIf="lastName.errors.minlength">You must input a minimum of {{ lastName.errors.minlength.requiredLength }} characters!</div>
+    </div>
+    <br>
+    <label for="email">*Email:</label>
+    <input type="email" name="email" required minlength="4" maxlength="24" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+      [(ngModel)]="user.email" #email='ngModel' />
+    <div *ngIf='(email.touched && email.errors)'>
+      <div class="error" *ngIf='email.errors.required'>You must enter an email.</div>
+      <div class="error" *ngIf="email.errors.minlength">You must input a minimum of {{ email.errors.minlength.requiredLength }} characters!</div>
+      <div class="error" *ngIf="email.errors.pattern">You must enter a VALID email address.</div>
+    </div>
+    <br>
+    <label for="password">*Password:</label>
+    <input type="password" name="password" required minlength="6" maxlength="24" pattern="^([a-zA-Z0-9@*#]{6,15})$" [(ngModel)]="user.password"
+      #password='ngModel' />
+    <div *ngIf='(password.touched && password.errors)'>
+      <div class="error" *ngIf='password.errors.required'>You must enter a password.</div>
+      <div class="error" *ngIf="password.errors.minlength">You must input a minimum of {{ password.errors.minlength.requiredLength }} characters!</div>
+      <div class="error" *ngIf="password.errors.pattern">You can only use alpha numeric, @,*, and #.</div>
+    </div>
+    <br>
+    <label for="confirm_password">*Confirm Password:</label>
+    <input type="password" name="confirm_password" required minlength="6" maxlength="24" pattern='{{user.password.value}}' [(ngModel)]="user.password_confirm"
+      #confpass='ngModel' />
+    <div *ngIf='(confpass.touched && confpass.errors)'>
+      <div class="error" *ngIf='confpass.errors.required'>You must confirm your password.</div>
+      <div class="error" *ngIf="confpass.errors.minlength">You must input a minimum of {{ confpass.errors.minlength.requiredLength }} characters!</div>
+      <div class="error" *ngIf="confpass.errors.pattern">Your passwords do not match!</div>
+    </div>
+    <br>
+    <label for="street_address">*Street Address</label>
+    <input type="text" name="street_address" required minlength="3" maxlength="24" [(ngModel)]="user.street_address" #street_address='ngModel'
+    />
+    <div *ngIf='(street_address.touched && street_address.errors)'>
+      <div class="error" *ngIf='street_address.errors.required'>You must enter an address.</div>
+      <div class="error" *ngIf="street_address.errors.minlength">You must input a minimum of {{ street_address.errors.minlength.requiredLength }} characters!</div>
+    </div>
+    <br>
+    <label for="apt">Unit/Apt#</label>
+    <input type="text" name="apt" [(ngModel)]="user.apt" #apt='ngModel' />
+    <br>
+    <label for="city">*City</label>
+    <input type="text" name="city" required minlength="4" maxlength="24" [(ngModel)]="user.city" #city='ngModel' />
+    <div *ngIf='(city.touched && city.errors)'>
+      <div class="error" *ngIf='city.errors.required'>You must enter a city.</div>
+      <div class="error" *ngIf="city.errors.minlength">You must input a minimum of {{ city.errors.minlength.requiredLength }} characters!</div>
+    </div>
+    <br>
+    <label for="state">*State</label>
+    <select name="state" required [(ngModel)]="user.state" #state='ngModel'>
+      <option value="AL">AL</option>
+      <option value="AK">AK</option>
+      <option value="AR">AR</option>
+      <option value="AZ">AZ</option>
+      <option value="CA">CA</option>
+      <option value="CO">CO</option>
+      <option value="CT">CT</option>
+      <option value="DC">DC</option>
+      <option value="DE">DE</option>
+      <option value="FL">FL</option>
+      <option value="GA">GA</option>
+      <option value="HI">HI</option>
+      <option value="IA">IA</option>
+      <option value="ID">ID</option>
+      <option value="IL">IL</option>
+      <option value="IN">IN</option>
+      <option value="KS">KS</option>
+      <option value="KY">KY</option>
+      <option value="LA">LA</option>
+      <option value="MA">MA</option>
+      <option value="MD">MD</option>
+      <option value="ME">ME</option>
+      <option value="MI">MI</option>
+      <option value="MN">MN</option>
+      <option value="MO">MO</option>
+      <option value="MS">MS</option>
+      <option value="MT">MT</option>
+      <option value="NC">NC</option>
+      <option value="NE">NE</option>
+      <option value="NH">NH</option>
+      <option value="NJ">NJ</option>
+      <option value="NM">NM</option>
+      <option value="NV">NV</option>
+      <option value="NY">NY</option>
+      <option value="ND">ND</option>
+      <option value="OH">OH</option>
+      <option value="OK">OK</option>
+      <option value="OR">OR</option>
+      <option value="PA">PA</option>
+      <option value="RI">RI</option>
+      <option value="SC">SC</option>
+      <option value="SD">SD</option>
+      <option value="TN">TN</option>
+      <option value="TX">TX</option>
+      <option value="UT">UT</option>
+      <option value="VT">VT</option>
+      <option value="VA">VA</option>
+      <option value="WA">WA</option>
+      <option value="WI">WI</option>
+      <option value="WV">WV</option>
+      <option value="WY">WY</option>
+    </select>
+    <br>
+    <label for="lucky">*I'm feeling lucky:</label>
+    <select name="lucky" required [(ngModel)]="user.lucky" #lucky='ngModel'>
+      <option value="true">Yes</option>
+      <option value="flase">No</option>
+    </select>
+    <br>
+    <br>
+    <button class="register" *ngIf='formData.valid'>Register</button>
+  </form>
+</div>
