@@ -1,0 +1,15 @@
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-supersaiyanthree',
+  templateUrl: './supersaiyanthree.component.html',
+  styleUrls: ['./supersaiyanthree.component.css']
+})
+export class SupersaiyanthreeComponent implements OnInit, OnChanges {
+  @Input() power;
+  constructor() {}
+  ngOnChanges() {
+    this.power = this.power * 250;
+  }
+  ngOnInit() {}
+}
