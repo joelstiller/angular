@@ -6,7 +6,7 @@ import { Review } from '../review';
 import { Movie } from '../movie';
 @Injectable()
 export class ReviewService {
-  private base = 'http://localhost:4201/api/reviews';
+  private base = '/api/reviews';
 
   constructor(private http: HttpClient) {}
 
