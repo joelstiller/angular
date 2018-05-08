@@ -35,7 +35,8 @@ export class ListreviewComponent implements OnInit {
       this.movie = movie;
     });
     this.reviewService.getByMovie(this.passid).subscribe(reviews => {
-      this.reviews = reviews.sort(function(a, b) {
+      const something = reviews as any;
+      this.reviews = something.sort(function(a, b) {
         return a.stars - b.stars;
       });
     });
@@ -44,7 +45,7 @@ export class ListreviewComponent implements OnInit {
   }
   onDelete(id: number) {
     // console.log('delete review', id);
-    this.reviewService.deleteReview(id).subscribe(returnedReview => {
+    this.reviewService.deleteReview(String(id)).subscribe(returnedReview => {
       this.reviews = this.reviews.filter(b => b._id !== returnedReview._id);
     });
   }

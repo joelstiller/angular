@@ -25,12 +25,13 @@ export class MovielistComponent implements OnInit {
         let stars = 0;
         let count = 0;
         this.reviewService.getByMovie(movie._id).subscribe(reviews => {
-          reviews.forEach(review => {
+          const holder = reviews as any;
+          holder.forEach(review => {
             stars += review.stars;
             count++;
             //      console.log(stars);
           });
-          movie.stars = stars / count;
+          movie.stars = String(stars / count);
         });
       }),
         (this.movies = movies);
