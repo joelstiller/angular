@@ -1,0 +1,20 @@
+<fieldset class="scheduler-border">
+  <legend class="scheduler-border">Submit a movie</legend>
+
+
+
+  <form (submit)='onSubmit($event, movieForm)' #movieForm='ngForm'>
+    <div class="error_holder">
+      <div *ngIf='(title.touched && title.errors)'>
+        <div class="error" *ngIf="title.errors.minlength">Title must be a minimum of {{ title.errors.minlength.requiredLength }} characters!</div>
+        <div class="error" *ngIf='title.errors.required'>You must enter a movie title!.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-form-label" for="">Movie Title</label>
+      <input class="form-control" type="text" name='title' required minlength="3" [(ngModel)]='movie.title' #title='ngModel'>
+    </div>
+    <button *ngIf='movieForm.valid'>Submit</button>
+  </form>
+  <button routerLink="/">Cancel</button>
+</fieldset>
