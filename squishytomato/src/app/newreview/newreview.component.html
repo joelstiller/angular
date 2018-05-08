@@ -1,5 +1,5 @@
 <fieldset class="scheduler-border">
-  <legend class="scheduler-border">Submit a Review</legend>
+  <legend class="scheduler-border">Submit a Review for {{movie.title}}</legend>
   <form (submit)='onSubmit($event, reviewForm)' #reviewForm='ngForm'>
     <div class="error_holder">
       <div *ngIf='(user.touched && user.errors)'>
@@ -34,5 +34,5 @@
     </div>
     <button *ngIf='reviewForm.valid'>Submit</button>
   </form>
-  <button routerLink="/movies ">Cancel</button>
+  <button routerLink="/movies">Cancel</button>
 </fieldset>
