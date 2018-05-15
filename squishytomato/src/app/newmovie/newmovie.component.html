@@ -1,18 +1,49 @@
 <fieldset class="scheduler-border">
   <legend class="scheduler-border">Submit a movie</legend>
-
-
-
+  <div *ngIf='errors.length'>
+    <ul class="alert alert-danger">
+      <li *ngFor='let error of errors'>{{error}}</li>
+    </ul>
+  </div>
   <form (submit)='onSubmit($event, movieForm)' #movieForm='ngForm'>
     <div class="error_holder">
       <div *ngIf='(title.touched && title.errors)'>
         <div class="error" *ngIf="title.errors.minlength">Title must be a minimum of {{ title.errors.minlength.requiredLength }} characters!</div>
         <div class="error" *ngIf='title.errors.required'>You must enter a movie title!.</div>
+        <div *ngIf='(user.touched && user.errors)'>
+          <div class="error" *ngIf="user.errors.minlength">Your name must be a minimum of {{ user.errors.minlength.requiredLength }} characters!</div>
+          <div class="error" *ngIf='user.errors.required'>You must enter a name!</div>
+        </div>
+        <div *ngIf='(stars.touched && stars.errors)'>
+          <div class="error" *ngIf='stars.errors.required'>You must choose a rating!</div>
+        </div>
+        <div *ngIf='(content.touched && content.errors)'>
+          <div class="error" *ngIf="content.errors.minlength">Your review must be a minimum of {{ content.errors.minlength.requiredLength }} characters!</div>
+          <div class="error" *ngIf='content.errors.required'>You must enter a review!</div>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 col-form-label" for="">Movie Title</label>
       <input class="form-control" type="text" name='title' required minlength="3" [(ngModel)]='movie.title' #title='ngModel'>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-form-label" for="">Your Name</label>
+      <input class="form-control" type="text" name='user' required minlength="2" [(ngModel)]='review.user' #user='ngModel'>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-form-label" for="">Stars</label>
+      <select name="stars" id="stars" required [(ngModel)]='review.stars' #stars='ngModel'>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-form-label" for="">Your Review</label>
+      <input class="form-control" type="textarea" name='review' required minlength="10" [(ngModel)]='review.review' #content='ngModel'>
     </div>
     <button *ngIf='movieForm.valid'>Submit</button>
   </form>

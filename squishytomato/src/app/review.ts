@@ -3,5 +3,5 @@ export class Review {
   user: string;
   review: string;
   stars: number;
-  movieID: number;
+  movieID: string;
 }

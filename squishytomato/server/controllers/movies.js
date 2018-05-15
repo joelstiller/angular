@@ -24,7 +24,6 @@ module.exports = {
         const errors = Object.keys(error.errors).map(
           key => error.errors[key].message
         );
-
         response.json(errors);
       });
   },

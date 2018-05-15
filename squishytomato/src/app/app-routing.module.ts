@@ -24,12 +24,12 @@ const routes: Routes = [
         component: NewmovieComponent
       },
       {
-        path: ':movieID',
+        path: 'review/:movieID',
         component: NewreviewComponent,
         data: { movieID: ':movieID' }
       },
       {
-        path: 'review/:movieID',
+        path: ':movieID',
         component: ListreviewComponent
       }
     ]

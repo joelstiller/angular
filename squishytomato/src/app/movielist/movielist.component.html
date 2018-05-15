@@ -14,8 +14,8 @@
         <td>{{ movie.title}}</td>
         <td>{{ movie.stars}}</td>
         <td>
-          <button [routerLink]="['/movies/review', movie._id]">Read Reviews</button>
-          <button [routerLink]="['/movies', movie._id]">Write Review</button>
+          <button [routerLink]="['/movies', movie._id]">Read Reviews</button>
+          <button [routerLink]="['/movies/review', movie._id]">Write Review</button>
         </td>
       </tr>
     </tbody>

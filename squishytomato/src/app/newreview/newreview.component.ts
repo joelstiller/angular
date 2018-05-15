@@ -15,6 +15,7 @@ import { MovieService } from '../services/movie.service';
 export class NewreviewComponent implements OnInit {
   review: Review = new Review();
   movie: Movie = new Movie();
+  errors = [];
   @Output() createReview = new EventEmitter<Review>();
 
   id: string;
@@ -44,13 +45,16 @@ export class NewreviewComponent implements OnInit {
     form.value.movieID = this.passid;
     this.review.movieID = this.passid;
     // console.log('submitting form ', form.value);
-
     this.reviewService.createReview(this.review).subscribe(review => {
-      this.createReview.emit(review);
-      this.router.navigateByUrl('/');
-      this.review = new Review();
-
-      form.reset();
+      console.log(review);
+      if (Array.isArray(review)) {
+        this.errors = review;
+      } else {
+        this.createReview.emit(review);
+        this.router.navigateByUrl('/');
+        this.review = new Review();
+        form.reset();
+      }
     });
   }
 }

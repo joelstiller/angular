@@ -32,6 +32,9 @@ export class MovielistComponent implements OnInit {
             //      console.log(stars);
           });
           movie.stars = String(stars / count);
+          if (movie.stars === 'NaN') {
+            movie.stars = '0';
+          }
         });
       }),
         (this.movies = movies);
